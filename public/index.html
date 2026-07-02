@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research Hub</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="control">
+        <div class="topbar">
+          <div>
+            <h1>Research Hub</h1>
+            <p>Topic in, field teams out, encyclopedia back.</p>
+          </div>
+          <div id="status" class="status">Idle</div>
+        </div>
+
+        <section class="panel">
+          <h2>Research Request</h2>
+          <label>
+            Topic
+            <textarea id="topic" rows="7" placeholder="What do you want researched?"></textarea>
+          </label>
+          <label>
+            Extra context
+            <textarea id="context" rows="6" placeholder="Paste preferences, constraints, prior notes, source lists, or why you care."></textarea>
+          </label>
+          <div class="context-head">
+            <label class="file-button">
+              <input id="contextFile" type="file" accept=".txt,.md,.json,.csv,.log">
+              <span>Add File</span>
+            </label>
+            <button id="clearContext" class="secondary" type="button">Clear Context</button>
+          </div>
+        </section>
+
+        <section class="settings-grid">
+          <div class="panel">
+            <h2>Depth</h2>
+            <div class="segmented">
+              <label><input type="radio" name="depth" value="light">Light</label>
+              <label><input type="radio" name="depth" value="medium">Medium</label>
+              <label><input type="radio" name="depth" value="deep">Deep</label>
+            </div>
+            <label class="check-row">
+              <input id="askClarifyingQuestions" type="checkbox">
+              <span>Run clarifier first</span>
+            </label>
+          </div>
+
+          <div class="panel">
+            <h2>Models</h2>
+            <div id="modelFields" class="model-fields"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Research Standards</h2>
+          <textarea id="researchStandards" rows="4"></textarea>
+          <button id="saveButton" class="secondary" type="button">Save Settings</button>
+        </section>
+
+        <div class="run-strip">
+          <button id="runButton" class="run-button" type="button">RUN RESEARCH</button>
+          <button id="cancelButton" class="cancel-button" type="button" disabled>Cancel</button>
+          <label class="dry-toggle">
+            <input id="dryRun" type="checkbox">
+            <span>Dry run</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="output">
+        <div class="output-head">
+          <h2>Run Output</h2>
+          <button id="reloadConfig" class="secondary" type="button">Reload Config</button>
+        </div>
+        <pre id="log"></pre>
+        <div id="result" class="result"></div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

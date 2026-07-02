@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Research Hub",
+    "outputRoot": "runs",
+    "claudeCommand": "claude",
+    "dryRun": false
+  },
+  "models": {
+    "clarifier": {
+      "label": "Clarifier / question pass",
+      "model": "opus",
+      "flags": ["--dangerously-skip-permissions", "--no-session-persistence"],
+      "effort": "medium"
+    },
+    "dean": {
+      "label": "Dean / field assignment",
+      "model": "sonnet",
+      "flags": ["--dangerously-skip-permissions", "--no-session-persistence"],
+      "effort": "high"
+    },
+    "researcher": {
+      "label": "Field researcher",
+      "model": "sonnet",
+      "flags": ["--dangerously-skip-permissions", "--no-session-persistence"],
+      "effort": "high"
+    },
+    "inspector": {
+      "label": "Subfield inspector",
+      "model": "sonnet",
+      "flags": ["--dangerously-skip-permissions", "--no-session-persistence"],
+      "effort": "medium"
+    },
+    "synthesizer": {
+      "label": "Synthesis / encyclopedia",
+      "model": "opus",
+      "flags": ["--dangerously-skip-permissions", "--no-session-persistence"],
+      "effort": "high"
+    }
+  },
+  "settings": {
+    "depth": "medium",
+    "askClarifyingQuestions": true,
+    "maxClarifyingQuestions": 5,
+    "maxFields": {
+      "light": 3,
+      "medium": 5,
+      "deep": 8
+    },
+    "inspectorsPerField": {
+      "light": 0,
+      "medium": 1,
+      "deep": 3
+    },
+    "researchStandards": "Prefer accurate, nuanced, source-aware research. Separate facts from inference. Flag uncertainty, controversies, weak evidence, and practical implications.",
+    "avoidModel": "opus4.8"
+  },
+  "agents": {
+    "clarifier": {
+      "tier": "clarifier",
+      "model": "clarifier",
+      "systemPrompt": "You clarify research intent. Ask only high-value questions when the user's topic is underspecified, ambiguous, high-stakes, or could branch into very different research products."
+    },
+    "dean": {
+      "tier": "dean",
+      "model": "dean",
+      "systemPrompt": "You are a research dean. Decompose a topic into fields, subfields, deliverables, methods, and investigator assignments."
+    },
+    "researcher": {
+      "tier": "researcher",
+      "model": "researcher",
+      "systemPrompt": "You are an independent field researcher. Produce rigorous, structured findings for your assigned field, with assumptions, open questions, and useful practical takeaways."
+    },
+    "inspector": {
+      "tier": "inspector",
+      "model": "inspector",
+      "systemPrompt": "You are a subfield inspector. Probe one narrow question deeply, identify edge cases and caveats, and return concise findings to the field researcher."
+    },
+    "synthesizer": {
+      "tier": "synthesizer",
+      "model": "synthesizer",
+      "systemPrompt": "You synthesize multi-field research into a coherent encyclopedia-style dossier. Preserve nuance, resolve contradictions where possible, and clearly mark uncertainty."
+    }
+  }
+}

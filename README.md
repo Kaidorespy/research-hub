@@ -1,3 +1,6 @@
+<img width="1408" height="768" alt="Gemini_Generated_Image_8z1lqd8z1lqd8z1l (1)" src="https://github.com/user-attachments/assets/f7eb4e84-9d0f-4bb3-a3b1-4c34952e27f6" />
+
+
 # Research Hub
 
 A local Claude Code orchestration app for hands-off research dossiers.
